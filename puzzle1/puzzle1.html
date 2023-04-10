@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPuzzle.Fun</title>
+    <link rel="stylesheet" href="../style.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>    
+<script>
+      $(document).ready(function() {
+      $('#mybutton').hide().delay(9000).fadeIn(2200);
+});
+      $(document).ready(function() {
+      $('#mybutton2').hide().delay(9000).fadeIn(2200);
+});
+function mission_failed() {
+	alert("Mission Failed!");
+}
+</script>    
+    
+</head>
+<body>
+
+<div class="main_container">
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html"><img src="../CyberPuzzle.Fun.png" alt="Logo"></a>
+        </div>
+        <div class="clearfix"></div>
+    </header><!-- header -->
+    
+    <h1>Puzzle 1: Message in a Bottle</h1>
+    <section class="puzzle1"><!-- Puzzle 1 content -->
+      
+    <div id="outerContainer">
+      <div class="container">
+          <!-- container div is required to set absolute positions within it, so that .typing and .hiders exactly overlap -->
+
+          <p class="typing">
+    Chief: "Hello Agent - I'm glad you're there - we need your help. We have an active investigation underway and we need you to make contact with a potential intelligence asset.
+	We don't have a name - all we have is an address and the <b>clue</b> "message in a bottle". We don't know what it means. It could be a trap, but we’d still like make contact, if we can. The information this contact can provide could be explosive. Will you accept this mission, Agent?"     
+          </p>
+
+          <div class="hiders">
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+
+          </div>
+
+	 </div>
+        </br ></br ></br ></br ></br >
+	      <div class="yesno">
+	      <button id="mybutton" onclick="location.href='./puzzle1a.html'">Yes</button>
+		  <button id="mybutton2" onclick="mission_failed()">No</button>
+        </div>
+
+    </div>
+
+    </div><!-- Main Container -->
+
+	 </br >
+    <footer>
+        <div>
+            <h3>Richard Dobson - USQ - U1011744</h3>
+    </footer>
+
+    <div>
+        <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>  
+    </div>  
+      
+</body>
+</html>

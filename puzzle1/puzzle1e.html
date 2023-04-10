@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPuzzle.Fun</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    
+</head>
+<body>
+
+<div class="main_container">
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html"><img src="../CyberPuzzle.Fun.png" alt="Logo"></a>
+        </div>
+        <div class="clearfix"></div>
+    </header><!-- header -->
+    
+    <h1>Puzzle 1: Message in a Bottle</h1>
+    <section class="puzzle1"><!-- Puzzle 1 content -->
+      
+    <div id="outerContainer">
+      <div class="container">
+          <!-- container div is required to set absolute positions within it, so that .typing and .hiders exactly overlap -->
+
+          <p class="typing">
+        Ok great! Now all I have to do is read the rows of the table from left to right, top to bottom, and I'll have succeeded in decoding this message!</br >
+		(Don't worry about the spaces between the words at this point...)
+          </p>
+
+          <div class="hiders">
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+
+          </div>
+
+	 </div>
+        </br ></br ></br ></br >
+		
+		<div id="table_div">
+		<form class="table_form" id="table_form">
+		<table style="width: 100%;" border="1" cellpadding="2">
+<tbody>
+<tr>
+<td>C</td>
+<td>L</td>
+<td>U</td>
+<td>E</td>
+</tr>
+<tr>
+<td>"1st"</td>
+<td>"3rd"</td>
+<td>"4th"</td>
+<td>"2nd"</td>
+</tr>
+<tr>
+<td>M</td>
+<td>U</td>
+<td>K</td>
+<td>G</td>
+</tr>
+<tr>
+<td>E</td>
+<td>I</td>
+<td>N</td>
+<td>E</td>
+</tr>
+<tr>
+<td>X</td>
+<td>T</td>
+<td>L</td>
+<td>O</td>
+</tr>
+<tr>
+<td>O</td>
+<td>K</td>
+<td>F</td>
+<td>O</td>
+</tr>
+<tr>
+<td>R</td>
+<td>N</td>
+<td>O</td>
+<td>R</td>
+</tr>
+<tr>
+<td>M</td>
+<td>O</td>
+<td>R</td>
+<td>D</td>
+</tr>
+<tr>
+<td>E</td>
+<td>R</td>
+<td>P</td>
+<td>I</td>
+</tr>
+<tr>
+<td>C</td>
+<td>K</td>
+<td>L</td>
+<td>E</td>
+</tr>
+<tr>
+<td>P</td>
+<td>I</td>
+<td>E</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<br/ >
+ <form>
+		<div id="cleartext_input_div">
+		 <form class="cleartext_input_form">
+		  <label for="cleartext_input">Input decoded cleartext here:</label>
+		  <input type="text" onfocus="this.value=''" id="cleartext_input" name="cleartext_input">
+		  <input type="button" value="Submit" onClick="myFunction()">
+		  </form></div></br ></br >
+
+
+
+     </div><!-- Table -->
+
+    </div><!-- Outer Container -->
+
+    </div><!-- Main Container -->
+
+	 </br >
+    <footer>
+        <div>
+            <h3>Richard Dobson - USQ - U1011744</h3>
+    </footer>
+
+    <div>
+        <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>  
+    </div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>    
+
+<script>
+	  $(document).ready(function() {
+      $('#table_div').hide().delay(2000).fadeIn(2200);
+      });
+/* var data;
+ var data_no_space;
+ $('.cleartext_input_form').on('submit', function () {
+    var data = document.getElementById('cleartext_input').value;
+	var data_no_space = data.replace(/\s+/g, "");
+	if (data.toUpperCase() == "MUKGEINEXTLOOKFORNORMORDERPICKLEPIE.") {
+	  window.location.href = "./puzzle1f.html"
+	  } else {
+	  alert(data_no_space.toUpperCase() + " is not the correct cleartext!");
+	  }
+	  alert(data.toUpperCase());
+     return false;
+ });*/
+function myFunction() {
+ var data = document.getElementById('cleartext_input').value;
+ var data_no_space;
+ var data_no_space = data.replace(/\s+/g, "");
+ if (data_no_space.toUpperCase() == "MUKGEINEXTLOOKFORNORMORDERPICKLEPIE." || data_no_space.toUpperCase() == "MUKGEINEXTLOOKFORNORMORDERPICKLEPIE") {
+   window.location.href="./puzzle1f.html";
+   } else {
+   	  alert(data_no_space.toUpperCase() + " is not the correct cleartext!");
+	  }
+	  return false;
+}
+
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+
+</script>
+    
+      
+</body>
+</html>
