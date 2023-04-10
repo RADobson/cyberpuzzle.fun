@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+body{
+    min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+    background-color: black;
+	padding: 40px;
+	color: white;
+	text-align: center;
+}
+.main_container{
+    width: 900px;
+    height: auto;
+    
+    margin: auto;
+}
+.main_container > header{
+    background-color: #626368;
+}
+
+.main_container > header > .logo > img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav > ul{
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    text-align: center;
+    
+}
+.nav > ul > li{
+    display: inline-block;
+    text-decoration-line: underline;
+    
+}
+.nav > ul > li > a{
+    color: silver;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: x-large;
+}
+nav > ul > li > a:hover{
+    background-color: blue;
+}
+.clearfix{
+    clear: both;
+}
+
+
+.yesno {
+	text-align: center;
+	margin-top: auto;
+}
+
+footer {
+	  color: white;
+	  text-align: center;
+	  margin-top: auto;
+}
+
+#copyright {
+  color: white;
+  text-align: center;
+  margin-top: auto;
+}
+
+h1 {
+  color: grey;
+}
+
+@keyframes typing {
+    from { width: 100% }
+    to { width: 0 }
+    
+}
+
+.container {
+  position: relative;
+  font-family: Consolas, monospace;  
+}
+
+.typing {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  z-index: -1;
+  text-align: left;
+}
+
+.hiders {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.hiders p {
+  position: relative; 
+  clear: both; 
+  margin: 0;
+  float: right; /* makes animation go left-to-right */
+  width:0; /* graceful degradation: if animation doesn't work, these are invisible by default */
+  background: black; /* same as page background */
+  animation: typing 2s steps(30, end);
+  animation-fill-mode: both;  /* load first keyframe on page load, leave on last frame at end */
+}
+  
+.hiders p:nth-child(2) {
+  animation-delay: 2s;
+}
+.hiders p:nth-child(3) {
+  animation-delay: 4s;
+}
+.hiders p:nth-child(4) {
+  animation-delay: 6s;
+}
+.hiders p:nth-child(5) {
+  animation-delay: 8s;
+}
+.hiders p:nth-child(6) {
+  animation-delay: 10s;
+}
+.hiders p:nth-child(7) {
+  animation-delay: 12s;
+}
+.hiders p:nth-child(8) {
+  animation-delay: 14s;
+}
+.hiders p:nth-child(9) {
+  animation-delay: 16s;
+}
+.hiders p:nth-child(10) {
+  animation-delay: 18s;
+}
+.hiders p:nth-child(11) {
+  animation-delay: 20s;
+}
+.hiders p:nth-child(12) {
+  animation-delay: 22s;
+}
+.hiders p:nth-child(13) {
+  animation-delay: 24s;
+}
+.hiders p:nth-child(14) {
+  animation-delay: 26s;
+}
+#bottle_wrap {
+	height: 750px;
+	 width: 1000px;
+}
+
+#bottle_wrap:hover {
+  box-shadow: 0 0 15px 5px blue; 
+}
+
+b {
+	text-decoration: underline;
+}
+
+.stay_still {
+	position: absolute;
+}
