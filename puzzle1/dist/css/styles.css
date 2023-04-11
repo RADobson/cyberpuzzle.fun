@@ -1,0 +1,113 @@
+/*css reset */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+code,
+small,
+strike,
+strong,
+sub,
+sup,
+b,
+u,
+i {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font: normal 0.9em/1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+#frame {
+  max-width: 620px;
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #eee;
+  padding: 10px;
+}
+
+#content {
+  font: normal normal 1em/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 40px 10px;
+}
+
+h1 {
+  font: normal bold 2em/1.8em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: left;
+  background: #ccc;
+  padding: 0 15px;
+  width: auto;
+}
+
+h2 {
+  font: italic bold 1.3em/1.2em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 5px 15px 15px;
+}
+
+input[type="radio"] {
+  margin: 0 10px 5px -22px;
+}
+
+label {
+  margin: 0 0 5px;
+}
+
+#score p {
+  font-size: 0.95em;
+  font-style: italic;
+  color: #666;
+  float: right;
+  margin: 5px 5px 0 0;
+}
+
+#score:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+#response {
+  min-height: 70px;
+  margin: 10px;
+}
+
+#response h3 {
+  font: normal bold 1.2em/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 5px 0;
+}

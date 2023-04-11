@@ -1,140 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberPuzzle.Fun</title>
     <link rel="stylesheet" href="../style.css">
-    
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
 </head>
+
 <body>
+    <div class="main_container">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html"><img src="../puzzle1/assets/img/CyberPuzzle.Fun.png" alt="Logo"
+                        class="img-fluid"></a>
+            </div>
+            <div class="clearfix"></div>
+        </header><!-- header -->
 
-<div class="main_container">
-    <header class="header">
-        <div class="logo">
-            <a href="../index.html"><img src="../CyberPuzzle.Fun.png" alt="Logo"></a>
-        </div>
-        <div class="clearfix"></div>
-    </header><!-- header -->
-    
-    <h1>Puzzle 1: Message in a Bottle</h1>
-    <section class="puzzle1"><!-- Puzzle 1 content -->
-      
-    <div id="outerContainer">
-      <div class="container">
-          <!-- container div is required to set absolute positions within it, so that .typing and .hiders exactly overlap -->
+        <h1>Puzzle 1: Message in a Bottle</h1>
+        <section class="puzzle1"><!-- Puzzle 1 content -->
 
-          <p class="typing">
-        Great! Now I need to find the "key word" to decrypt the cipher text with... </br >
-		Hmmm that's weird, the keyboard on this desk is missing some keys...
-		Let me see if I can find them.</br ></br > Here they are! These key caps must be the letters that make up the cipher key word.</br >
-		Let me rearrange them to find a word that fits.
-          </p>
+            <div id="outerContainer">
+                <div class="container">
+                    <!-- container div is required to set absolute positions within it, so that .typing and .hiders exactly overlap -->
 
-          <div class="hiders">
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+                    <p class="typing">
+                        Great! Now I need to find the "key word" to decrypt the cipher text with... </br>
+                        Hmmm that's weird, the keyboard on this desk is missing some keys...
+                        Let me see if I can find them.</br></br> Here they are! These key caps must be the letters that
+                        make up the cipher key word.</br>
+                        Let me rearrange them to find a word that fits.
+                    </p>
 
-          </div>
+                    <div class="hiders">
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
 
-	 </div>
-        </br ></br ></br ></br ></br ></br >
-		<div id="keyboard_wrap"><img src="./keyboard_clue.jpg" alt="keyboard"  width="1000" height="600"></br ></br ></div>
-		
-	      <div id="array" class="thirdcanvas" class="clearfix" class="stay_still"></br >
-	      <button class="array" id="mybutton" class="clearfix">Shuffle</button></br ></br >
-          
-        </div></br >
-		
-		<div id="cipher_keyword_input_div">
-		 <form class="cipher_keyword_form">
-		  <label for="cipher_keyword_input">Input cipher key word here:</label>
-		  <input type="text" onfocus="this.value=''" id="cipher_keyword_input" name="cipher_keyword_input">
-		  <input type="submit" value="Submit">
-		  </form></div></br ></br >
-     
-    </div>
+                    </div>
 
+                </div>
+                </br></br></br></br></br></br>
+                <div id="keyboard_wrap"><img src="../puzzle1/assets/img/keyboard_clue.jpg" alt="keyboard" width="1000"
+                        class="img-fluid" height="600"></br></br></div>
+
+                <div id="array" class="thirdcanvas" class="clearfix" class="stay_still"></br>
+                    <button class="array" id="mybutton" class="clearfix">Shuffle</button></br></br>
+
+                </div></br>
+
+                <div id="cipher_keyword_input_div">
+                    <form class="cipher_keyword_form">
+                        <label for="cipher_keyword_input">Input cipher key word here:</label>
+                        <input type="text" onfocus="this.value=''" id="cipher_keyword_input"
+                            name="cipher_keyword_input">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div></br></br>
+            </div>
     </div><!-- Main Container -->
 
-	 </br >
+    </br>
     <footer>
-        <div>
-            <h3>Richard Dobson - USQ - U1011744</h3>
+        <h3>Richard Dobson - USQ - U1011744</h3>
     </footer>
 
     <div>
-        <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>  
+        <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>
     </div>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>    
-<script>
-jQuery(function ($) {
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="../puzzle1/dist/js/puzzlec.js"></script>
 
-    var arr = new Array("./e.png", "./c.png", "./u.png", "./l.png");
 
-    $.each($.shuffle(arr), function (_, src) {
-        $('<img />', {
-            src: src
-        }).appendTo('#array')
-    })
-    $('button.array').click(function () {
-        $('#array').shuffle()
-    });
-});
-
-(function ($) {
-
-    $.fn.shuffle = function () {
-        var _self = this,
-            children = $.shuffle(this.children().get());
-        $.each(children, function () {
-            _self.append(this)
-        })
-        return this;
-    };
-
-    $.shuffle = function (arr) {
-        for (var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
-        return arr;
-    };
-
-})(jQuery);
-
-</script>
-
-<script>
-      $(document).ready(function() {
-      $('#array').hide().delay(9000).fadeIn(2200);
-});
-      $(document).ready(function() {
-      $('#mybutton2').hide().delay(9000).fadeIn(2200);
-});
-      $(document).ready(function() {
-      $('#keyboard_wrap').hide().delay(6000).fadeIn(2200);
-      });
-	  $(document).ready(function() {
-      $('#cipher_keyword_input_div').hide().delay(10000).fadeIn(2200);
-      });
-function mission_failed() {
-	alert("Mission Failed!");
-}
-var data;
-$('.cipher_keyword_form').on('submit', function () {
-    var data = document.getElementById('cipher_keyword_input').value;
-	if (data.toUpperCase() == "CLUE") {
-	  window.location.href = "./puzzle1d.html"
-	  } else {
-	  alert(data.toUpperCase() + " is not the correct cipher key word!");
-	  }
-    return false;
-});
-</script>
-    
-      
 </body>
+
 </html>
