@@ -2,15 +2,17 @@ console.log("puzzle1c.js loaded");
 
 jQuery(function ($) {
   var arr = new Array(
-    "../../assets/img/e.png",
-    "../../assets/img/c.png",
-    "../../assets/img/u.png",
-    "../../assets/img/l.png"
+    "https://w7.pngwing.com/pngs/725/87/png-transparent-computer-keyboard-computer-icons-button-keyboard-electronics-text-computer-keyboard-thumbnail.png",
+    "https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/keyboard_key_c.png",
+    "https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/keyboard_key_u.png",
+    "https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/keyboard_key_l.png"
   );
 
   $.each($.shuffle(arr), function (_, src) {
-    $("<img />", {
+    $(`<img  />`, {
       src: src,
+      height: 100,
+      width: 100,
     }).appendTo("#array");
   });
   $("button.array").click(function () {

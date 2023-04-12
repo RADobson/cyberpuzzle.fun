@@ -24,7 +24,7 @@ $(".table_form").on("submit", function () {
     txt = txt + data.elements[i].value;
   }
   txt_slice = txt.slice(0, -6);
-  if (txt_slice.toUpperCase() == "MUKGEINEXTLOOKFORNORMORDERPICKLEPIE.") {
+  if (txt_slice.toUpperCase() == "CLUE") {
     window.location.href = "./puzzle1e.html";
   } else {
     alert(txt_slice.toUpperCase() + " is not the correct plain text string!");
@@ -97,3 +97,5 @@ $("input").keydown(function (e) {
       .focus();
   }
 });
+
+// MUKGEINEXTLOOKFORNORMORDERPICKLEPIE
