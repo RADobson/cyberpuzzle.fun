@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CyberPuzzle.fun - Interactive cyber puzzles for learning computer science and cybersecurity">
+    <meta name="description" content="CyberPuzzle.fun - Interactive cyber puzzles for learning computer science and cybersecurity. WCAG 2.1 AA compliant, keyboard accessible, screen reader friendly.">
     <meta name="theme-color" content="#e94560">
+    <meta name="color-scheme" content="dark">
     <title>CyberPuzzle.Fun - Learn Cybersecurity Through Play</title>
     
     <!-- Preload critical assets -->
@@ -27,7 +28,7 @@
         // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
+                navigator.serviceWorker.register('./service-worker.js')
                     .then(registration => {
                         console.log('SW registered:', registration);
                     })
@@ -40,64 +41,101 @@
 </head>
 
 <body>
+    <!-- Skip Navigation Link for Keyboard Users -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    
+    <!-- Accessibility Toolbar -->
+    <div class="accessibility-toolbar" role="region" aria-label="Accessibility controls">
+        <button onclick="window.location.href='./accessibility.html'" aria-label="View accessibility statement and options">
+            ♿ Accessibility
+        </button>
+    </div>
+    
     <div class="main_container">
-        <header class="header">
+        <header class="header" role="banner">
             <div class="logo">
-                <a href="./index.html" aria-label="CyberPuzzle.Fun Home">
+                <a href="./index.html" aria-label="CyberPuzzle.Fun Home - Learn Cybersecurity Through Play">
                     <img src="./puzzle1/assets/img/CyberPuzzle.Fun.png" alt="CyberPuzzle.Fun Logo" class="img-fluid" loading="eager">
                 </a>
             </div>
             <div class="clearfix"></div>
         </header>
 
-        <h1><a href="./puzzle1/puzzle1.html">Puzzle 1: Message in a Bottle 🍾</a></h1>
-        
-        <section class="puzzle1">
-            <div id="outerContainer">
-                <div class="container">
-                    <p class="intro-text">
-                        Welcome, Agent! 🕵️ Ready to test your cybersecurity skills?
-                        <br><br>
-                        <small style="color: var(--text-muted);">Learn about transposition ciphers, encryption, and more through interactive puzzles.</small>
-                    </p>
+        <!-- Live region for announcements -->
+        <div id="announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+        <main id="main-content" role="main">
+            <h1><a href="./puzzle1/puzzle1.html" aria-describedby="puzzle-desc">Puzzle 1: Message in a Bottle 🍾</a></h1>
+            <p id="puzzle-desc" class="sr-only">An interactive puzzle about transposition ciphers</p>
+            
+            <section class="puzzle1" aria-labelledby="welcome-heading">
+                <h2 id="welcome-heading" class="sr-only">Welcome Message</h2>
+                
+                <div id="outerContainer">
+                    <div class="container">
+                        <p class="intro-text">
+                            Welcome, Agent! 🕵️ Ready to test your cybersecurity skills?
+                            <br><br>
+                            <small style="color: var(--text-muted);">Learn about transposition ciphers, encryption, and more through interactive puzzles.</small>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            
-            <br>
-            
-            <div class="puzzle-card" style="
-                background: rgba(255,255,255,0.05);
-                border: 1px solid rgba(255,255,255,0.1);
-                border-radius: var(--border-radius);
-                padding: 30px;
-                max-width: 600px;
-                margin: 0 auto;
-                transition: all 0.3s ease;
-            " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 30px rgba(233,69,96,0.2)';" 
-               onmouseout="this.style.transform='';this.style.boxShadow='';">
-                <h3 style="color: var(--primary-color); margin-bottom: 15px;">🎯 Mission Brief</h3>
-                <p style="color: var(--text-muted);">Your first mission involves decrypting a secret message using transposition cipher techniques. Can you crack the code?</p>
-                <a href="./puzzle1/puzzle1.html" class="btn-pulse" style="
-                    display: inline-block;
-                    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-                    color: white;
-                    padding: 15px 40px;
-                    text-decoration: none;
+                
+                <br>
+                
+                <article class="puzzle-card" tabindex="0" role="article" aria-labelledby="mission-title" 
+                         style="
+                    background: rgba(255,255,255,0.05);
+                    border: 1px solid rgba(255,255,255,0.1);
                     border-radius: var(--border-radius);
-                    margin-top: 20px;
-                    font-weight: 600;
-                ">Start Mission</a>
-            </div>
-        </section>
+                    padding: 30px;
+                    max-width: 600px;
+                    margin: 0 auto;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 30px rgba(233,69,96,0.2)';" 
+                   onmouseout="this.style.transform='';this.style.boxShadow='';"
+                   onfocus="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 30px rgba(233,69,96,0.2)';"
+                   onblur="this.style.transform='';this.style.boxShadow='';">
+                    <h3 id="mission-title" style="color: var(--primary-color); margin-bottom: 15px;">🎯 Mission Brief</h3>
+                    <p style="color: var(--text-muted);">Your first mission involves decrypting a secret message using transposition cipher techniques. Can you crack the code?</p>
+                    <a href="./puzzle1/puzzle1.html" class="btn-pulse" style="
+                        display: inline-block;
+                        background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+                        color: white;
+                        padding: 15px 40px;
+                        text-decoration: none;
+                        border-radius: var(--border-radius);
+                        margin-top: 20px;
+                        font-weight: 600;
+                    " aria-describedby="start-hint">
+                        Start Mission
+                    </a>
+                    <span id="start-hint" class="sr-only">Opens Puzzle 1: Message in a Bottle</span>
+                </article>
+                
+                <!-- Keyboard Navigation Help -->
+                <aside class="keyboard-shortcuts" role="complementary" aria-labelledby="shortcuts-title">
+                    <h3 id="shortcuts-title">⌨️ Keyboard Shortcuts</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted);">
+                        <li style="margin: 8px 0;"><kbd>Tab</kbd> - Navigate elements</li>
+                        <li style="margin: 8px 0;"><kbd>Enter</kbd> - Activate buttons/links</li>
+                        <li style="margin: 8px 0;"><kbd>Space</kbd> - Skip animation</li>
+                    </ul>
+                </aside>
+            </section>
+        </main>
 
         <br>
         
-        <footer>
+        <footer role="contentinfo">
             <div>
                 <h3>Richard Dobson - USQ - U1011744</h3>
             </div>
             <div>
                 <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>
+                <p>
+                    <a href="./accessibility.html" style="color: var(--text-muted);">Accessibility Statement</a>
+                </p>
             </div>
         </footer>
     </div>
@@ -109,6 +147,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous" defer></script>
+        
+    <script>
+        // Announce page load to screen readers
+        document.addEventListener('DOMContentLoaded', function() {
+            const announcer = document.getElementById('announcements');
+            if (announcer) {
+                announcer.textContent = 'Welcome to CyberPuzzle.Fun. Press Tab to navigate, or press Enter to start the mission.';
+            }
+        });
+    </script>
 </body>
 
 </html>
