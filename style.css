@@ -1,0 +1,432 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700&display=swap");
+
+:root {
+  --primary-color: #e94560;
+  --secondary-color: #0f3460;
+  --accent-color: #533483;
+  --bg-color: #0a0a0a;
+  --text-color: #ffffff;
+  --text-muted: #a0a0a0;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --warning-color: #ffc107;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background: linear-gradient(135deg, var(--bg-color) 0%, #1a1a2e 100%) !important;
+  padding: 40px 20px;
+  color: var(--text-color) !important;
+  text-align: center;
+  font-family: 'Source Code Pro', Consolas, Monaco, monospace;
+  line-height: 1.6;
+}
+.main_container {
+  height: auto;
+  margin: auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+.main_container > header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.main_container > header > .logo > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+  transition: transform var(--transition-speed) ease;
+}
+
+.main_container > header > .logo > img:hover {
+  transform: scale(1.02);
+}
+
+.nav > ul {
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+  text-align: center;
+}
+.nav > ul > li {
+  display: inline-block;
+  text-decoration-line: underline;
+}
+.nav > ul > li > a {
+  color: silver;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: x-large;
+}
+nav > ul > li > a:hover {
+  background-color: blue;
+}
+.clearfix {
+  clear: both;
+}
+
+.yesno {
+  text-align: center;
+  margin-top: auto;
+}
+
+footer {
+  color: white;
+  text-align: center;
+  margin-top: auto;
+}
+
+#copyright {
+  color: white;
+  text-align: center;
+  margin-top: auto;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+  margin-bottom: 30px;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h1 a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all var(--transition-speed) ease;
+}
+
+h1 a:hover {
+  color: #ff6b6b;
+  text-shadow: 0 0 20px rgba(233, 69, 96, 0.8);
+}
+
+h2, h3 {
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+p {
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6b6b;
+}
+
+/* Typing Animation - Optimized */
+@keyframes typing {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+/* Performance: Use will-change for animated elements */
+.hiders p {
+  will-change: width;
+}
+
+/* Skip Animation Button */
+.skip-animation {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  font-size: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all var(--transition-speed) ease;
+}
+
+.skip-animation:hover {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 15px;
+  }
+  
+  .main_container > header {
+    padding: 15px;
+  }
+  
+  form {
+    padding: 20px;
+  }
+  
+  input[type="text"] {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  table {
+    font-size: 14px;
+  }
+  
+  table input[type="text"] {
+    max-width: 35px;
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Loading State */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Focus Visible for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.container {
+  position: relative;
+  font-family: Consolas, monospace;
+}
+
+.hiders {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.hiders p {
+  position: relative;
+  clear: both;
+  margin: 0;
+  float: right; /* makes animation go left-to-right */
+  width: 0; /* graceful degradation: if animation doesn't work, these are invisible by default */
+  background: black; /* same as page background */
+  animation: typing 2s steps(30, end);
+  animation-fill-mode: both; /* load first keyframe on page load, leave on last frame at end */
+}
+
+.hiders p:nth-child(2) {
+  animation-delay: 2s;
+}
+.hiders p:nth-child(3) {
+  animation-delay: 4s;
+}
+.hiders p:nth-child(4) {
+  animation-delay: 6s;
+}
+.hiders p:nth-child(5) {
+  animation-delay: 8s;
+}
+.hiders p:nth-child(6) {
+  animation-delay: 10s;
+}
+.hiders p:nth-child(7) {
+  animation-delay: 12s;
+}
+.hiders p:nth-child(8) {
+  animation-delay: 14s;
+}
+.hiders p:nth-child(9) {
+  animation-delay: 16s;
+}
+.hiders p:nth-child(10) {
+  animation-delay: 18s;
+}
+.hiders p:nth-child(11) {
+  animation-delay: 20s;
+}
+.hiders p:nth-child(12) {
+  animation-delay: 22s;
+}
+.hiders p:nth-child(13) {
+  animation-delay: 24s;
+}
+.hiders p:nth-child(14) {
+  animation-delay: 26s;
+}
+
+#bottle_wrap {
+  transition: all 0.5s ease;
+  box-shadow: 0 0 15px 5px rgba(0,0,0,0.5);
+  display: inline-block;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+#bottle_wrap:hover {
+  box-shadow: 0 0 25px 8px var(--primary-color);
+  transform: scale(1.05);
+}
+
+/* Button Styles */
+button, input[type="submit"], input[type="button"] {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-family: 'Source Code Pro', monospace;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  margin: 10px;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+}
+
+button:active, input[type="submit"]:active, input[type="button"]:active {
+  transform: translateY(0);
+}
+
+button#mybutton2 {
+  background: linear-gradient(135deg, #666 0%, #333 100%);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+button#mybutton2:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+/* Form Styles */
+form {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255,255,255,0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+input[type="text"] {
+  background: rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.2);
+  color: var(--text-color);
+  padding: 12px 15px;
+  font-size: 16px;
+  font-family: 'Source Code Pro', monospace;
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 400px;
+  margin: 10px 0;
+  transition: all var(--transition-speed) ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(233, 69, 96, 0.3);
+}
+
+label {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* Table Styles */
+table {
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin: 20px auto;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  background: var(--secondary-color);
+  color: white;
+  padding: 15px;
+  font-weight: 600;
+}
+
+td {
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+table input[type="text"] {
+  max-width: 50px;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Cipher Image Styling */
+#cipher_wrap img, #keyboard_wrap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+b {
+  text-decoration: underline;
+}
+
+.stay_still {
+  position: absolute;
+}

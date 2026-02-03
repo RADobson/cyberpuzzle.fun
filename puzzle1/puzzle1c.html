@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find the cipher key by solving the keyboard puzzle">
+    <meta name="theme-color" content="#e94560">
+    <title>Find the Key | CyberPuzzle.Fun</title>
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://code.jquery.com">
+    <link rel="preconnect" href="https://d1nhio0ox7pgb.cloudfront.net">
+    
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="main_container">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to Home">
+                    <img src="../puzzle1/assets/img/CyberPuzzle.Fun.png" alt="Logo" class="img-fluid">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </header>
+
+        <h1>Puzzle 1: Message in a Bottle</h1>
+        <section class="puzzle1">
+            <div id="outerContainer">
+                <div class="container">
+                    <p class="typing">
+                        Great! Now I need to find the "key word" to decrypt the cipher text with... <br>
+                        Hmmm that's weird, the keyboard on this desk is missing some keys...
+                        Let me see if I can find them.<br><br> Here they are! These key caps must be the letters that
+                        make up the cipher key word.<br>
+                        Let me rearrange them to find a word that fits.
+                    </p>
+
+                    <div class="hiders" aria-hidden="true">
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                <br><br><br><br><br><br>
+                
+                <div id="keyboard_wrap">
+                    <img src="../puzzle1/assets/img/keyboard_clue.jpg" alt="Keyboard with missing keys" class="img-fluid" loading="lazy">
+                    <br><br>
+                </div>
+
+                <div id="array" class="thirdcanvas clearfix stay_still" style="min-height: 120px;">
+                    <br>
+                    <button class="array btn btn-primary shuffle-btn" type="button" id="shuffleBtn">
+                        🎲 Shuffle Keys
+                    </button>
+                    <br><br>
+                </div>
+                <br>
+
+                <div id="cipher_keyword_input_div">
+                    <form class="cipher_keyword_form" id="keywordForm">
+                        <label for="cipher_keyword_input">🔑 What word can you make from the keys?</label>
+                        <input type="text" 
+                               placeholder="Enter the keyword..." 
+                               id="cipher_keyword_input"
+                               name="cipher_keyword_input"
+                               maxlength="4"
+                               autocomplete="off"
+                               aria-label="Cipher keyword input">
+                        <input type="submit" value="Submit Answer">
+                        <div id="letter-hint" style="margin-top: 15px; color: var(--text-muted); font-size: 14px;"></div>
+                    </form>
+                </div>
+                <br><br>
+            </div>
+        </section>
+        
+        <footer>
+            <h3>Richard Dobson - USQ - U1011744</h3>
+        </footer>
+
+        <div>
+            <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>
+        </div>
+    </div>
+    
+    <button class="skip-animation" onclick="skipAnimation()">⏭ Skip</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="../puzzle1/dist/js/game-utils.js"></script>
+    <script>
+        // Key images - using lazy loading and error handling
+        const keyImages = [
+            { letter: 'C', url: 'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/keyboard_key_c.png' },
+            { letter: 'L', url: 'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/keyboard_key_l.png' },
+            { letter: 'U', url: 'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/keyboard_key_u.png' },
+            { letter: 'E', url: 'https://w7.pngwing.com/pngs/725/87/png-transparent-computer-keyboard-computer-icons-button-keyboard-electronics-text-computer-keyboard-thumbnail.png' }
+        ];
+
+        // Shuffle function
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        // Render keys
+        function renderKeys() {
+            const shuffled = shuffleArray(keyImages);
+            const container = $("#array");
+            
+            // Remove existing key images
+            container.find('img.key-image').remove();
+            
+            // Add new key images
+            shuffled.forEach((key) => {
+                const img = $(`<img class="key-image" alt="Key ${key.letter}" />`)
+                    .attr('src', key.url)
+                    .attr('data-letter', key.letter)
+                    .css({
+                        height: 80,
+                        width: 80,
+                        margin: 5,
+                        borderRadius: 8,
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                        transition: 'transform 0.2s ease'
+                    })
+                    .on('error', function() {
+                        // Fallback if image fails to load
+                        $(this).replaceWith(`<div class="key-fallback" style="
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 80px;
+                            width: 80px;
+                            margin: 5px;
+                            background: linear-gradient(135deg, #333, #555);
+                            border-radius: 8px;
+                            font-size: 32px;
+                            font-weight: bold;
+                            color: white;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                        ">${key.letter}</div>`);
+                    });
+                container.append(img);
+            });
+        }
+
+        $(document).ready(function () {
+            // Render keys with delay
+            setTimeout(renderKeys, 500);
+            
+            // Show elements with reduced delays
+            $("#array").hide().delay(5000).fadeIn(1000);
+            $("#keyboard_wrap").hide().delay(3000).fadeIn(1000);
+            $("#cipher_keyword_input_div").hide().delay(6000).fadeIn(1000);
+            
+            // Schedule hints
+            setTimeout(() => {
+                if (window.HintSystem) {
+                    HintSystem.scheduleHints('puzzle1c');
+                }
+            }, 7000);
+            
+            // Show letter hint
+            setTimeout(() => {
+                $("#letter-hint").html("💡 Available letters: <b>C, L, U, E</b>");
+            }, 8000);
+        });
+
+        // Shuffle button
+        $("#shuffleBtn").click(function() {
+            $("#array .key-image, #array .key-fallback").fadeOut(200, function() {
+                renderKeys();
+                $("#array .key-image, #array .key-fallback").hide().fadeIn(200);
+            });
+        });
+
+        // Form submission
+        let attempts = 0;
+        $("#keywordForm").on("submit", function (e) {
+            e.preventDefault();
+            attempts++;
+            
+            const data = $("#cipher_keyword_input").val().trim();
+            
+            if (data.toUpperCase() === "CLUE") {
+                if (window.Feedback) {
+                    Feedback.showSuccess('Excellent! The keyword is CLUE!', 1500);
+                }
+                if (window.GameState) {
+                    GameState.saveProgress('puzzle1c');
+                }
+                setTimeout(() => {
+                    window.location.href = "./puzzle1d.html";
+                }, 1500);
+            } else {
+                let message = `"${data.toUpperCase()}" is not the correct keyword.`;
+                if (attempts >= 3) {
+                    message += "\n\n💡 Try arranging C, L, U, E to form a word that means 'a piece of evidence'.";
+                }
+                if (window.Feedback) {
+                    Feedback.showError(message, 4000);
+                } else {
+                    alert(message);
+                }
+            }
+            return false;
+        });
+        
+        function skipAnimation() {
+            $(".hiders").hide();
+            $("#array, #keyboard_wrap, #cipher_keyword_input_div").stop(true, true).show();
+            $(".skip-animation").hide();
+            renderKeys();
+        }
+    </script>
+</body>
+
+</html>

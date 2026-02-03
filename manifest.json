@@ -1,0 +1,24 @@
+{
+    "name": "CyberPuzzle.fun",
+    "short_name": "CyberPuzzle",
+    "description": "Interactive cyber puzzles for learning computer science and cybersecurity",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#e94560",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/puzzle1/assets/img/CyberPuzzle.Fun.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/puzzle1/assets/img/CyberPuzzle.Fun.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["education", "games"],
+    "lang": "en"
+}

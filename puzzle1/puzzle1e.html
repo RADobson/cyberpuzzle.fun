@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read the decrypted message and complete the mission">
+    <meta name="theme-color" content="#e94560">
+    <title>Read the Message | CyberPuzzle.Fun</title>
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://code.jquery.com">
+    
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="main_container">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to Home">
+                    <img src="../puzzle1/assets/img/CyberPuzzle.Fun.png" alt="Logo" class="img-fluid">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </header>
+
+        <h1>Puzzle 1: Message in a Bottle</h1>
+        <section class="puzzle1">
+            <div id="outerContainer">
+                <div class="container">
+                    <p class="typing">
+                        Ok great! Now all I have to do is read the rows of the table from left to right, top to bottom, and I'll
+                        have succeeded in decoding this message!<br>
+                        (Don't worry about the spaces between the words at this point...)
+                    </p>
+
+                    <div class="hiders" aria-hidden="true">
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                <br><br><br><br>
+
+                <div id="table_div" style="max-width: 600px; margin: 0 auto;">
+                    <div style="overflow-x: auto;">
+                        <table class="table text-white" style="background: rgba(255,255,255,0.05); border-radius: var(--border-radius);">
+                            <thead>
+                                <tr style="background: var(--secondary-color);">
+                                    <th>C</th>
+                                    <th>L</th>
+                                    <th>U</th>
+                                    <th>E</th>
+                                </tr>
+                                <tr style="background: rgba(255,255,255,0.1);">
+                                    <td>"1st"</td>
+                                    <td>"3rd"</td>
+                                    <td>"4th"</td>
+                                    <td>"2nd"</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>M</td><td>U</td><td>K</td><td>G</td></tr>
+                                <tr><td>E</td><td>I</td><td>N</td><td>E</td></tr>
+                                <tr><td>X</td><td>T</td><td>L</td><td>O</td></tr>
+                                <tr><td>O</td><td>K</td><td>F</td><td>O</td></tr>
+                                <tr><td>R</td><td>N</td><td>O</td><td>R</td></tr>
+                                <tr><td>M</td><td>O</td><td>R</td><td>D</td></tr>
+                                <tr><td>E</td><td>R</td><td>P</td><td>I</td></tr>
+                                <tr><td>C</td><td>K</td><td>L</td><td>E</td></tr>
+                                <tr><td>P</td><td>I</td><td>E</td><td>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    
+                    <div id="cleartext_input_div" style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: var(--border-radius); border: 1px solid rgba(255,255,255,0.1);">
+                        <form class="cleartext_input_form" id="cleartextForm">
+                            <label for="cleartext_input" style="color: var(--primary-color); font-weight: bold; margin-bottom: 15px;">
+                                📝 Enter the decoded message (read left to right, top to bottom):
+                            </label>
+                            <input type="text" 
+                                   placeholder="Enter the decoded message..." 
+                                   id="cleartext_input" 
+                                   name="cleartext_input"
+                                   autocomplete="off"
+                                   style="font-size: 16px; letter-spacing: 1px;">
+                            <input type="button" value="Submit Answer" onClick="checkAnswer()" style="margin-top: 15px;">
+                            <div id="hint-text" style="margin-top: 15px; color: var(--text-muted); font-size: 13px;"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <button class="skip-animation" onclick="skipAnimation()">⏭ Skip</button>
+    
+    <br>
+    <footer>
+        <div>
+            <h3>Richard Dobson - USQ - U1011744</h3>
+        </div>
+    </footer>
+
+    <div>
+        <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="../puzzle1/dist/js/game-utils.js"></script>
+    <script>
+        // Correct answers (with and without period)
+        const correctAnswers = [
+            "MUKGEINEXTLOOKFORNORMORDERPICKLEPIE.",
+            "MUKGEINEXTLOOKFORNORMORDERPICKLEPIE"
+        ];
+        
+        let attempts = 0;
+        
+        $(document).ready(function () {
+            // Show table with reduced delay
+            $("#table_div").hide().delay(2000).fadeIn(1500);
+            
+            // Schedule hints
+            setTimeout(() => {
+                if (window.HintSystem) {
+                    HintSystem.scheduleHints('puzzle1e');
+                }
+            }, 3000);
+            
+            // Show hint about the period
+            setTimeout(() => {
+                $("#hint-text").html("💡 Remember to include the period (.) at the end!");
+            }, 6000);
+        });
+
+        function checkAnswer() {
+            attempts++;
+            const data = $("#cleartext_input").val().trim();
+            const normalizedData = data.replace(/\s+/g, "").toUpperCase();
+            
+            if (correctAnswers.includes(normalizedData)) {
+                if (window.Feedback) {
+                    Feedback.showSuccess('Correct! Mission accomplished!', 1500);
+                }
+                if (window.GameState) {
+                    GameState.saveProgress('puzzle1e');
+                }
+                setTimeout(() => {
+                    window.location.href = "./puzzle1f.html";
+                }, 1500);
+            } else {
+                let message = `"${data}" is not the correct message.`;
+                
+                // Progressive hints
+                if (attempts === 1) {
+                    message += "\n\n💡 Read the table left to right, row by row.";
+                } else if (attempts === 2) {
+                    message += "\n\n💡 The first row reads: MUKGE";
+                } else if (attempts >= 3) {
+                    message += "\n\n💡 The answer is: MUKGEINEXTLOOKFORNORMORDERPICKLEPIE. (including the period)";
+                }
+                
+                if (window.Feedback) {
+                    Feedback.showError(message, 5000);
+                } else {
+                    alert(message);
+                }
+            }
+            return false;
+        }
+        
+        // Prevent Enter key from causing issues
+        $(document).ready(function() {
+            $(window).keydown(function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    checkAnswer();
+                    return false;
+                }
+            });
+        });
+        
+        function skipAnimation() {
+            $(".hiders").hide();
+            $("#table_div").stop(true, true).show();
+            $(".skip-animation").hide();
+        }
+    </script>
+</body>
+
+</html>

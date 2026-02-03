@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find the message in a bottle to continue the mission">
+    <meta name="theme-color" content="#e94560">
+    <title>Find the Bottle | CyberPuzzle.Fun</title>
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://code.jquery.com">
+    
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="main_container">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to Home">
+                    <img src="../puzzle1/assets/img/CyberPuzzle.Fun.png" alt="Logo" class="img-fluid">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </header>
+
+        <h1>Puzzle 1: Message in a Bottle</h1>
+        <section class="puzzle1">
+            <div id="outerContainer">
+                <div class="container">
+                    <p class="typing">
+                        Phew! That was a long taxi ride... But now I'm here I don't know where to start... <br>Finding
+                        a "message in a bottle" is going to take even longer... There's hundreds of cubicles in this
+                        dusty old office!<br>Oh wait - what's that over there? It's a glass bottle on a desk! There
+                        seems to be something inside it... Should I open it? <br>
+                    </p>
+
+                    <div class="hiders" aria-hidden="true">
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                <br><br><br><br><br><br>
+                <div id="bottle" style="display: none;">
+                    <div id="bottle_wrap">
+                        <a href="../puzzle1/puzzle1b.html" aria-label="Open the bottle">
+                            <img src="../puzzle1/assets/img/bottle_img.jpg" alt="A mysterious bottle on a desk containing a secret message" class="img-fluid" loading="lazy">
+                        </a>
+                        <br><br>
+                        <p style="color: var(--text-muted); font-size: 14px;">👆 Click the bottle to open it</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <button class="skip-animation" onclick="skipAnimation()">⏭ Skip</button>
+    
+    <footer>
+        <h3>Richard Dobson - USQ - U1011744</h3>
+    </footer>
+
+    <div>
+        <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="../puzzle1/dist/js/game-utils.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Reduced delay for better UX
+            $("#bottle").hide().delay(4000).fadeIn(1500);
+            
+            // Save progress
+            if (window.GameState) {
+                GameState.saveProgress('puzzle1a');
+            }
+        });
+        
+        function skipAnimation() {
+            $(".hiders").hide();
+            $("#bottle").stop(true, true).show();
+            $(".skip-animation").hide();
+        }
+    </script>
+</body>
+
+</html>

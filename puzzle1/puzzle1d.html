@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Decrypt the message using the transposition cipher table">
+    <meta name="theme-color" content="#e94560">
+    <title>Decryption Table | CyberPuzzle.Fun</title>
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://code.jquery.com">
+    
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="main_container">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to Home">
+                    <img src="../puzzle1/assets/img/CyberPuzzle.Fun.png" alt="Logo" class="img-fluid">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </header>
+
+        <h1>Puzzle 1: Message in a Bottle</h1>
+        <section class="puzzle1">
+            <div id="outerContainer">
+                <div class="container">
+                    <p class="typing">
+                        Yes! - now I have both the cipher text: <b>MEXORMECPGEOORDIE.UITKNORKIKNLFORPLE</b>, and the
+                        keyword:<b>CLUE</b>.<br>
+                        I have everything I need to decrypt this message. To do that, I will need to draw a table.<br>
+                        Because "CLUE" is a 4-letter word - I know I'll need a table with 4 columns.<br>
+                        Then I need to split the cipher text string into 4 equal parts:<br>1-MEXORMECP 2-GEOORDIE.
+                        3-UITKNORKI 4-KNLFORPLE <br>
+                        Each of those sub-strings is 9 characters long, so my table needs to have 9 rows.<br>
+                        I'll write the keyword at the top, and then work out the alphabetical order of the letters.<br>
+                        All I need to do now is populate the table columns vertically - put string 1 in the "1st"
+                        column, string 2 in the "2nd" column, string 3 in the "3rd" column, and string 4 in the "4th"
+                        column.
+                    </p>
+
+                    <div class="hiders" aria-hidden="true">
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br>
+
+                <div id="table_div">
+                    <form class="table_form" id="table_form">
+                        <div style="overflow-x: auto;">
+                            <table border="1" cellpadding="2" class="table text-white" style="min-width: 400px;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">C</th>
+                                        <th scope="col">L</th>
+                                        <th scope="col">U</th>
+                                        <th scope="col">E</th>
+                                    </tr>
+                                    <tr style="background: rgba(255,255,255,0.1);">
+                                        <td>"1st"</td>
+                                        <td>"3rd"</td>
+                                        <td>"4th"</td>
+                                        <td>"2nd"</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r1" data-row="1" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r1" data-row="1" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r1" data-row="1" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r1" data-row="1" data-col="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r2" data-row="2" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r2" data-row="2" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r2" data-row="2" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r2" data-row="2" data-col="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r3" data-row="3" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r3" data-row="3" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r3" data-row="3" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r3" data-row="3" data-col="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r4" data-row="4" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r4" data-row="4" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r4" data-row="4" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r4" data-row="4" data-col="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r5" data-row="5" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r5" data-row="5" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r5" data-row="5" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r5" data-row="5" data-col="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r6" data-row="6" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r6" data-row="6" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r6" data-row="6" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r6" data-row="6" data-col="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r7" data-row="7" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r7" data-row="7" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r7" data-row="7" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r7" data-row="7" data-col="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r8" data-row="8" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r8" data-row="8" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r8" data-row="8" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r8" data-row="8" data-col="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" maxlength="1" size="1" id="c1r9" data-row="9" data-col="1"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c2r9" data-row="9" data-col="2"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c3r9" data-row="9" data-col="3"></td>
+                                        <td><input type="text" maxlength="1" size="1" id="c4r9" data-row="9" data-col="4"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <input class="form-control bg-primary" type="submit" value="Submit Table" style="margin-top: 20px;">
+                        
+                        <div id="progress-indicator" style="margin-top: 15px; color: var(--text-muted);"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <button class="skip-animation" onclick="skipAnimation()">⏭ Skip</button>
+    
+    <br>
+    <footer>
+        <div>
+            <h3>Richard Dobson - USQ - U1011744</h3>
+        </div>
+    </footer>
+
+    <div>
+        <p id="copyright"><small>Copyright &copy; 2023. All Rights Reserved.</small></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="../puzzle1/dist/js/game-utils.js"></script>
+    <script>
+        // Correct answer: MUKGEINEXTLOOKFORNORMORDERPICKLEPIE
+        const correctAnswer = "MUKGEINEXTLOOKFORNORMORDERPICKLEPIE";
+        
+        $(document).ready(function () {
+            // Show table with reduced delay
+            $("#table_div").hide().delay(8000).fadeIn(1500);
+            
+            // Schedule hints
+            setTimeout(() => {
+                if (window.HintSystem) {
+                    HintSystem.scheduleHints('puzzle1d');
+                }
+            }, 10000);
+            
+            // Update progress indicator
+            updateProgress();
+            $("input[type='text']").on('input', updateProgress);
+        });
+        
+        function updateProgress() {
+            const filled = $("input[type='text']").filter(function() {
+                return $(this).val().trim() !== '';
+            }).length;
+            const total = $("input[type='text']").length;
+            $("#progress-indicator").text(`Cells filled: ${filled}/${total}`);
+        }
+
+        // Enhanced keyboard navigation
+        $("input[type='text']").keydown(function (e) {
+            const $current = $(this);
+            const cellindex = $current.closest("td").index();
+            const $row = $current.closest("tr");
+            
+            // Auto-advance on input
+            if (e.key.length === 1 && e.key.match(/[a-zA-Z]/)) {
+                $current.val(e.key.toUpperCase());
+                $current.closest("td").nextAll("td").find("input").first().focus();
+                e.preventDefault();
+                updateProgress();
+                return;
+            }
+            
+            switch(e.which) {
+                case 37: // Left
+                    $current.closest("td").prevAll("td").find("input").last().focus();
+                    e.preventDefault();
+                    break;
+                case 39: // Right
+                case 9:  // Tab
+                    $current.closest("td").nextAll("td").find("input").first().focus();
+                    e.preventDefault();
+                    break;
+                case 40: // Down
+                    $row.nextAll("tr").first().find("td").eq(cellindex).find("input").focus();
+                    e.preventDefault();
+                    break;
+                case 38: // Up
+                    $row.prevAll("tr").first().find("td").eq(cellindex).find("input").focus();
+                    e.preventDefault();
+                    break;
+                case 8: // Backspace
+                    if ($current.val() === '') {
+                        $current.closest("td").prevAll("td").find("input").last().focus();
+                        e.preventDefault();
+                    }
+                    break;
+            }
+        });
+
+        // Form submission
+        $("#table_form").on("submit", function (e) {
+            e.preventDefault();
+            
+            // Collect all values row by row
+            let userAnswer = '';
+            for (let row = 1; row <= 9; row++) {
+                for (let col = 1; col <= 4; col++) {
+                    const val = $(`#c${col}r${row}`).val().trim().toUpperCase();
+                    userAnswer += val;
+                }
+            }
+            
+            if (userAnswer === correctAnswer) {
+                // Highlight correct cells
+                $("input[type='text']").css({
+                    'background': 'rgba(40, 167, 69, 0.3)',
+                    'border-color': '#28a745'
+                });
+                
+                if (window.Feedback) {
+                    Feedback.showSuccess('Perfect! The table is complete!', 1500);
+                }
+                if (window.GameState) {
+                    GameState.saveProgress('puzzle1d');
+                }
+                setTimeout(() => {
+                    window.location.href = "./puzzle1e.html";
+                }, 1500);
+            } else {
+                // Show which cells are wrong
+                let correctCount = 0;
+                for (let row = 1; row <= 9; row++) {
+                    for (let col = 1; col <= 4; col++) {
+                        const $input = $(`#c${col}r${row}`);
+                        const val = $input.val().trim().toUpperCase();
+                        const correctChar = correctAnswer[(row - 1) * 4 + (col - 1)];
+                        
+                        if (val === correctChar) {
+                            $input.css({
+                                'background': 'rgba(40, 167, 69, 0.2)',
+                                'border-color': '#28a745'
+                            });
+                            correctCount++;
+                        } else if (val !== '') {
+                            $input.css({
+                                'background': 'rgba(220, 53, 69, 0.2)',
+                                'border-color': '#dc3545'
+                            });
+                        }
+                    }
+                }
+                
+                const message = `Not quite right. You have ${correctCount}/${correctAnswer.length} letters correct.`;
+                if (window.Feedback) {
+                    Feedback.showError(message, 4000);
+                } else {
+                    alert(message);
+                }
+            }
+            return false;
+        });
+        
+        function skipAnimation() {
+            $(".hiders").hide();
+            $("#table_div").stop(true, true).show();
+            $(".skip-animation").hide();
+            updateProgress();
+        }
+    </script>
+</body>
+
+</html>

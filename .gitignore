@@ -1,0 +1,25 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies
+node_modules/
+
+# Build files (root level only)
+/dist/
+/build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+.temp/
